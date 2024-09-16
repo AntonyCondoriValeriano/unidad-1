@@ -24,25 +24,18 @@ public class CalcControl {
 
     @Autowired
     CalcServiceI serviceI;
-
     @FXML
     TextField txtResultado;
-
     @FXML
     TableView tableView;
-
     @FXML
     TableColumn<CalcTO, String> cVal1, cVal2, cResult;
-
     @FXML
     TableColumn<CalcTO, Character> cOper;
-
     @FXML
     TableColumn<CalcTO, Void> cOpc;
-
     private ObservableList<CalcTO> calcTOList;
     private int indexEdit=-1;
-
     @FXML
     Button btn7, btn8, btn9;
 
@@ -55,7 +48,7 @@ public class CalcControl {
 
     @FXML
     public void accionButton(ActionEvent event){
-        System.out.println("Holas");
+        System.out.println("Escribe ");
         Button button= (Button)event.getSource();
         switch (button.getId()){
             case "btn7","btn8","btn9","btn6","btn5","btn4","btn3","btn2","btn1","btn0":{

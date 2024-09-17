@@ -1,40 +1,67 @@
 package pe.edu.upeu.calcfx.control;
 
+import javafx.scene.control.cell.PropertyValueFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import pe.edu.upeu.calcfx.servicio.TictacToe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import org.springframework.beans.factory.annotation.Autowired;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TableView;
 import org.springframework.stereotype.Component;
-import pe.edu.upeu.calcfx.modelo.Tictac;
-import pe.edu.upeu.calcfx.servicio.TictacToe;
+
+
+import java.util.ArrayList;
 
 @Component
 public class TictacControl {
 
-    @Autowired
-    TictacToe serviceI;
-
     @FXML
     Button[][] tablero;
+    @FXML
+    private TextField nombreJugador1, nombreJugador2;
+
+    @FXML
+    private TableView<TictacToe> tablaPuntajes;
+    @FXML
+    private TableColumn<TictacToe, Integer> numP;
+    @FXML
+    private TableColumn<TictacToe, String> NomJ2;
+    @FXML
+    private TableColumn<TictacToe, String> Nomg;
+    @FXML
+    private TableColumn<TictacToe, String> Punt;
+    @FXML
+    private TableColumn<TictacToe, String> Esta;
 
 
     @FXML
     Button btn00, btn01, btn02,btn10, btn11, btn12, btn20,btn21, btn22;
 
     boolean turno=true;
+    private ArrayList<TictacToe> partidas = new ArrayList<>();
+    private String jugador1, jugador2;
+    private int numeroPartidas = 1;
     @FXML
     public void initialize() {
-
+        jugador1 = nombreJugador1.getText();
+        jugador2 = nombreJugador2.getText();
         tablero=new Button[][]{
                 {btn00, btn01, btn02},
                 {btn10, btn11, btn12},
                 {btn20,btn21, btn22}
         };
         anular();
+        numP.setCellValueFactory(new PropertyValueFactory<>("numP"));
+        NomJ2.setCellValueFactory(new PropertyValueFactory<>("NomJ2"));
+        Nomg.setCellValueFactory(new PropertyValueFactory<>("Nomg"));
+        Punt.setCellValueFactory(new PropertyValueFactory<>("Punt"));
+        Esta.setCellValueFactory(new PropertyValueFactory<>("Esta"));
     }
 
     @FXML
-     public void accionButon(ActionEvent e){
+    public void accionButon(ActionEvent e){
         Button b=(Button)e.getSource();
         b.setText(turno?"X":"O");
         turno=!turno;
@@ -47,25 +74,25 @@ public class TictacControl {
                 if (tablero[i][0].getText().equals("X") &&
                         tablero[i][1].getText().equals("X") &&
                         tablero[i][2].getText().equals("X")) {
-                    System.out.println("gano X" );
+                    registrarResultado("ganador", "terminado","1");
                 }
                 // Verifica columnas
                 if (tablero[0][i].getText().equals("O") &&
                         tablero[1][i].getText().equals("O") &&
                         tablero[2][i].getText().equals("O")) {
-                    System.out.println("gano \"O\"");
+                    registrarResultado("ganador", "terminado","1");
                 }
             }
             // Verifica diagonales
             if (tablero[0][0].getText().equals("X") &&
                     tablero[1][1].getText().equals("X") &&
                     tablero[2][2].getText().equals("X")) {
-                System.out.println("gano\"X\"" );
+                registrarResultado("ganador", "terminado","1");
             }
             if (tablero[0][2].getText().equals("O") &&
                     tablero[1][1].getText().equals("O") &&
                     tablero[2][0].getText().equals("O")) {
-                System.out.println("gano \"O\"" );
+                registrarResultado("ganador", "terminado","1");
             }
         }
 
@@ -78,6 +105,24 @@ public class TictacControl {
             System.out.println("");
         }
     }
+    public void registrarResultado(String ganador, String estado, String puntuacion) {
+        TictacToe nuevoPuntaje = new TictacToe(numeroPartidas, jugador1, jugador2, ganador, estado, puntuacion);
+        partidas.add(nuevoPuntaje);
+        tablaPuntajes.getItems().add(nuevoPuntaje);
+        numeroPartidas++;
+    }
+    @FXML
+    public boolean esEmpate() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (tablero[i][j].getText().isEmpty()) {
+                    System.out.println("es empate");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     @FXML
     public void iniciar(){
         activaDesacticaB(false);
@@ -88,6 +133,7 @@ public class TictacControl {
         activaDesacticaB(true);
         imprimir();
         limpiarTablero();
+        registrarResultado("anulado", "terminado","0");
     }
     public void limpiarTablero() {
         for (int i = 0; i < tablero.length; i++) {

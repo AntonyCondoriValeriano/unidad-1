@@ -6,9 +6,9 @@
 
 <AnchorPane id="#2c96ab" prefHeight="468.0" prefWidth="946.0" style="-fx-background-color: #0075ff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.calcfx.control.TictacControl">
     <children>
-        <Pane layoutX="8.0" layoutY="65.0" prefHeight="242.0" prefWidth="233.0" style="-fx-background-color: #3b00ff">
+        <Pane layoutX="29.0" layoutY="80.0" prefHeight="263.0" prefWidth="252.0" style="-fx-background-color: #3b00ff">
             <children>
-                <GridPane id="#941212" layoutX="19.0" layoutY="34.0" prefHeight="175.0" prefWidth="195.0">
+                <GridPane id="#941212" layoutX="19.0" layoutY="34.0" prefHeight="200.0" prefWidth="212.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,12 +36,12 @@
             <ColorAdjust contrast="-0.4" hue="-0.21" />
          </effect>
         </Pane>
-        <Label fx:id="turnoLabel" layoutX="421.0" layoutY="33.0" prefHeight="17.0" prefWidth="115.0" text="Turno: " textFill="#ebfc07" />
-        <TextField fx:id="nombreJugador1" layoutX="421.0" layoutY="65.0" promptText="Nombre Jugador 1" />
-        <TextField fx:id="nombreJugador2" layoutX="421.0" layoutY="106.0" promptText="Nombre Jugador 2" />
-        <Button layoutX="265.0" layoutY="145.0" mnemonicParsing="false" onAction="#iniciar" text="Iniciar" />
-        <Button layoutX="355.0" layoutY="145.0" mnemonicParsing="false" onAction="#anular" text="Anular" />
-        <TableView fx:id="tablaPuntajes" layoutX="279.0" layoutY="207.0" prefHeight="200.0" prefWidth="601.0">
+        <Label fx:id="turnoLabel" layoutX="558.0" layoutY="57.0" prefHeight="17.0" prefWidth="115.0" text="Turno: " />
+        <TextField fx:id="nombreJugador1" layoutX="558.0" layoutY="93.0" promptText="Nombre Jugador 1" />
+        <TextField fx:id="nombreJugador2" layoutX="558.0" layoutY="136.0" promptText="Nombre Jugador 2" />
+        <Button layoutX="315.0" layoutY="148.0" mnemonicParsing="false" onAction="#iniciar" prefHeight="35.0" prefWidth="57.0" text="Iniciar" />
+        <Button layoutX="406.0" layoutY="148.0" mnemonicParsing="false" onAction="#anular" prefHeight="35.0" prefWidth="57.0" text="Anular" />
+        <TableView fx:id="tablaPuntajes" layoutX="315.0" layoutY="207.0" prefHeight="200.0" prefWidth="601.0">
             <columns>
                 <TableColumn fx:id="NumeroPartido" prefWidth="87.0" style="-fx-background-color: #4659c6" text="N° Partida" />
                 <TableColumn fx:id="Jugador1" prefWidth="131.0" style="-fx-background-color: #4659c6" text="Nombre de Jugador 1" />

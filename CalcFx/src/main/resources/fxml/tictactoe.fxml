@@ -4,7 +4,7 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="#2c96ab" prefHeight="468.0" prefWidth="946.0" style="-fx-background-color: #941212;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.calcfx.control.TictacControl">
+<AnchorPane id="#2c96ab" prefHeight="468.0" prefWidth="946.0" style="-fx-background-color: #0075ff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.calcfx.control.TictacControl">
     <children>
         <Pane layoutX="8.0" layoutY="65.0" prefHeight="242.0" prefWidth="233.0" style="-fx-background-color: #3b00ff">
             <children>
@@ -53,4 +53,7 @@
         </TableView>
           <Label layoutX="638.0" layoutY="427.0" text="Condori Valeriano Antony" />
     </children>
+   <effect>
+      <ColorAdjust contrast="-0.02" hue="-0.05" />
+   </effect>
 </AnchorPane>

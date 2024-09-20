@@ -44,7 +44,7 @@ public class CalcControl {
     public void initialize() {
         anular();
     }
- int t=0;
+     int t=0;
 
     @FXML
     public void accionButton(ActionEvent event){
